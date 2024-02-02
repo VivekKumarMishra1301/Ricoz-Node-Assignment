@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Ticket from '../models/ticketModel.js'
+import User from '../models/userModel.js'
 export const createTicket = asyncHandler(async (req, res) => {
     try {
         const { email, category, subcategory, description } = req.body;
@@ -41,3 +42,23 @@ export const createTicket = asyncHandler(async (req, res) => {
     }
 
 });
+
+export const allTickets = asyncHandler(async (req, res) => {
+    try {
+        const id = req.params._id;
+        // console.log(id)
+        const getEmail = await User.findById( id );
+        // console.log(getEmail.email);
+        const tickets = await Ticket.find({ email: getEmail.email });
+        res.status(200).send({
+            success: true,
+             AllTicket:tickets
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: error
+        });   
+    }
+})
