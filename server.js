@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import dbConnect from './config/db.js';
 import authRoutes from './routes/authRoutes.js'
+import ticketRoutes from './routes/ticketRoutes.js'
 dotenv.config();
 dbConnect();
 const app = express();
