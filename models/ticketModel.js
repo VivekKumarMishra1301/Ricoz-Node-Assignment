@@ -1,19 +1,21 @@
 import mongoose from 'mongoose';
 const ticketSchema = new mongoose.Schema({
-    email:{
+    email: {
         type: 'String',
         required: true
     },
     Category: {
         type: "String",
-        required:true
+        required: true
     },
     SubCategory: {
         type: "String",
-        required:true
+        required: true
     },
     Description: {
         type: "String",
-        required:true
+        required: true
     }
-})
+}, { timestamps: true });
+
+export default mongoose.model('Tickets', ticketSchema);
