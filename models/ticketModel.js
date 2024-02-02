@@ -15,7 +15,12 @@ const ticketSchema = new mongoose.Schema({
     Description: {
         type: "String",
         required: true
+    },
+    status: {
+        type: "String",
+        required: true
     }
+
 }, { timestamps: true });
 
 export default mongoose.model('Tickets', ticketSchema);
